@@ -1,0 +1,40 @@
+---
+# This file overrides settings from default.config.yml to match the Paddle
+# server environment as good as possible for an optimal developer experience.
+# Developer machine specific settings, such as path mappings, can be put in
+# local.config.yml. See example.local.config.yml for an example local config
+# YML file.
+# See http://docs.drupalvm.com/en/latest/other/overriding-configurations/ for
+# more information.
+# Note: The merge of the variables in this file is shallow, so if you want to
+# override a single item in a list, you will need to re-define all items in
+# that list.
+
+# Don't use composer to build a local Paddle website.
+build_composer_project: false
+
+# Our Drupal code resides in the main synced directory, not in a 'drupal/web'
+# sub folder.
+drupal_core_path: "/var/www/drupalvm"
+
+# Paddle is a Drupal 7 distribution, not Drupal 8.
+drupal_major_version: 7
+
+# Use the Paddle installation profile instead of the standard one.
+drupal_install_profile: paddle
+
+# Without extra modules.
+drupal_enable_modules: []
+
+installed_extras:
+  - drush
+  # - java
+  # - memcached
+  # - selenium
+  # - solr
+  # - varnish
+  - xdebug
+
+# Paddle has not been tested with PHP 7.0, yet. It's currently mostly used with
+# PHP 5.6.
+php_version: "5.6"

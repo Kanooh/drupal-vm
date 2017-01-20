@@ -1,0 +1,19 @@
+---
+# This file overrides settings from config.yml with developer machine specific
+# settings, such as path mappings.
+# See http://docs.drupalvm.com/en/latest/other/overriding-configurations/ for
+# more information.
+# Note: The merge of the variables in this file is shallow, so if you want to
+# override a single item in a list, you will need to re-define all items in
+# that list.
+
+# A list of synced folders, with the keys 'local_path', 'destination', and
+# a 'type' of [nfs|rsync|smb] (leave empty for slow native shares). See
+# http://docs.drupalvm.com/en/latest/extras/syncing-folders/ for more info.
+vagrant_synced_folders:
+  # The first synced folder will be used for the default Drupal installation, if
+  # any of the build_* settings are 'true'.
+  - local_path: ~/Sites/paddle-all
+    destination: /var/www/drupalvm
+    type: nfs
+    create: true
