@@ -29,7 +29,7 @@ drupal_enable_modules: []
 installed_extras:
   - drush
   # - java
-  # - memcached
+  - memcached
   # - selenium
   # - solr
   # - varnish
