@@ -167,6 +167,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # VirtualBox.
   config.vm.provider :virtualbox do |v|
+#    v.gui = true
     v.linked_clone = true if Vagrant::VERSION =~ /^1.8/
     v.name = vconfig['vagrant_hostname']
     v.memory = vconfig['vagrant_memory']
