@@ -10,6 +10,10 @@
 # override a single item in a list, you will need to re-define all items in
 # that list.
 
+# Use a desktop version of Ubuntu so we get a graphical interface where we can
+# see and interact with a browser while running a Selenium test.
+#vagrant_box: boxcutter/ubuntu1604-desktop
+
 # Don't use composer to build a local Paddle website.
 build_composer_project: false
 
