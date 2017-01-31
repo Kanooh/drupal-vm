@@ -42,3 +42,12 @@ installed_extras:
 # Paddle has not been tested with PHP 7.0, yet. It's currently mostly used with
 # PHP 5.6.
 php_version: "5.6"
+
+# Allow to run Selenium tests with Firefox inside the VM.
+# Don't use
+#selenium_install_firefox: yes
+# from https://github.com/arknoll/ansible-role-selenium because it will always
+# install the latest version of Firefox.
+# Use https://github.com/arknoll/ansible-role-firefox/ instead and specify
+# Firefox version 40 instead of the default 38.
+firefox_version: '40.0'
