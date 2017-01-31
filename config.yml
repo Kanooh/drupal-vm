@@ -28,9 +28,9 @@ drupal_enable_modules: []
 
 installed_extras:
   - drush
-  # - java
+  - java
   # - memcached
-  # - selenium
+  - selenium
   # - solr
   # - varnish
   - xdebug
