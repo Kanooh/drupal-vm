@@ -6,7 +6,7 @@
 
 - name: firefox | Install dependencies
   apt: name="{{item}}" state="latest" update_cache="yes"
-  with_items: firefox_apt_deps.stdout_lines
+  with_items: "{{firefox_apt_deps.stdout_lines}}"
   when: firefox_apt_deps.stdout_lines is defined
 
 - name: firefox | Extract archive
