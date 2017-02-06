@@ -177,3 +177,28 @@
         loop_var: outer_item
       with_fileglob:
         - "{{ post_provision_tasks_dir|default(omit) }}"
+
+
+    - name: Creates directory for tty1
+      file: path=/etc/systemd/system/getty@tty1.service.d state=directory owner=root group=root mode=0775 recurse=yes
+
+    - name: Set autologin for the Vagrant user
+      copy:
+        content: "[Service] \r\n
+                    ExecStart= \r\n
+                    ExecStart=-/sbin/rungetty tty1 --autologin vagrant \r\n
+                    Type=idle \r\n" 
+        dest: /etc/systemd/system/getty@tty1.service.d/override.conf
+        force: no
+        group: root
+        owner: root
+        mode: 0555
+
+
+    - name: Startx automatically on boot on tty1
+      blockinfile: 
+        dest: /home/vagrant/.profile
+        block: |
+          if [ ! -e "/tmp/.X0-lock" ] && [[ $(tty) = /dev/tty1 ]] ; then
+            startx
+          fi
