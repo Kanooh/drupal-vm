@@ -2,6 +2,21 @@
 # vi: set ft=ruby :
 VAGRANTFILE_API_VERSION = '2' unless defined? VAGRANTFILE_API_VERSION
 
+# Check for missing plugins
+required_plugins = %w(vagrant-list vagrant-vbguest vagrant-reload vagrant-auto_network vagrant-hostsupdater vagrant-hostmanager)
+plugin_installed = false
+required_plugins.each do |plugin|
+  unless Vagrant.has_plugin?(plugin)
+    system "vagrant plugin install #{plugin}"
+    plugin_installed = true
+  end
+end
+
+# If new plugins installed, restart Vagrant process
+if plugin_installed === true
+  exec "vagrant #{ARGV.join' '}"
+end
+
 # Absolute paths on the host machine.
 host_drupalvm_dir = File.dirname(File.expand_path(__FILE__))
 host_project_dir = ENV['DRUPALVM_PROJECT_ROOT'] || host_drupalvm_dir
@@ -202,4 +217,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Allow an untracked Vagrantfile to modify the configurations
   eval File.read "#{host_config_dir}/Vagrantfile.local" if File.exist?("#{host_config_dir}/Vagrantfile.local")
+  
+  
+  # at the end reboot the VM
+  config.vm.provision :reload
 end
