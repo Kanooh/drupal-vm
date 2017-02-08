@@ -110,7 +110,8 @@
         "solr" in installed_extras or
         "selenium" in installed_extras or
         "elasticsearch" in installed_extras
-    - { role: arknoll.selenium, when: '"selenium" in installed_extras' }
+    - { role: arknoll.selenium, when: '"selenium" in installed_extras and not virtualbox_gui' }
+    - { role: paddle.selenium, when: '"selenium" in installed_extras and virtualbox_gui and "xorg" in extra_packages' }
     - { role: ansible-role-firefox, when: '"selenium" in installed_extras'}
     - { role: geerlingguy.solr, when: '"solr" in installed_extras' }
     - { role: geerlingguy.elasticsearch, when: '"elasticsearch" in installed_extras' }

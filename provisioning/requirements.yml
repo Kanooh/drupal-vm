@@ -1,7 +1,7 @@
 ---
 - src: ansible-role-firefox
   version: 1.0.0
-- src: arknoll.selenium
+- src: paddle.selenium
   version: 2.1.0
 - src: thom8.php-upload-progress
   version: 1.0.1
