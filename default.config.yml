@@ -31,7 +31,7 @@ vagrant_synced_folders:
 # Memory and CPU to use for this VM.
 vagrant_memory: 2048
 vagrant_cpus: 1
-vagrant_cpuexecutioncap : 100%
+vagrant_cpuexecutioncap: 100
 vagrant_videomemory: 16
 
 # Minimum required versions.
