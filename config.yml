@@ -40,8 +40,11 @@ installed_extras:
   - xdebug
 
 # Added extra packages needed to get the window manager up and running.
+# And php5.6-zip to get ZipArchive required by
+# PHPUnit_Extensions_Selenium2TestCase_SessionCommand_File.
 extra_packages:
   - fluxbox
+  - php5.6-zip
   - rungetty
   - sqlite
   - unzip
