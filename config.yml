@@ -39,6 +39,14 @@ installed_extras:
   # - varnish
   - xdebug
 
+# Added extra packages needed to get the window manager up and running.
+extra_packages:
+  - fluxbox
+  - rungetty
+  - sqlite
+  - unzip
+  - xorg
+
 #use the virtual box GUI:
 virtualbox_gui: true
 

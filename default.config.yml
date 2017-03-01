@@ -217,10 +217,6 @@ installed_extras:
 # Add any extra apt or yum packages you would like installed.
 extra_packages:
   - sqlite
-  - unzip
-  - rungetty
-  - xorg
-  - fluxbox
 
 # You can configure almost anything else on the server in the rest of this file.
 extra_security_enabled: false
