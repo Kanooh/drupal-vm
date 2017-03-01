@@ -65,3 +65,6 @@ php_version: "5.6"
 # Use https://github.com/arknoll/ansible-role-firefox/ instead and specify
 # Firefox version 40 instead of the default 38.
 firefox_version: '40.0'
+
+# Connect to the IDE on host machine to accept the debugging session.
+php_xdebug_remote_host: 10.0.2.2
