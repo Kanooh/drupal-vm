@@ -57,6 +57,9 @@ virtualbox_gui: true
 # PHP 5.6.
 php_version: "5.6"
 
+# Paddle gets 256M on the kañooh production servers.
+php_memory_limit: "256M"
+
 # Allow to run Selenium tests with Firefox inside the VM.
 # Don't use
 #selenium_install_firefox: yes
@@ -68,3 +71,7 @@ firefox_version: '40.0'
 
 # Connect to the IDE on host machine to accept the debugging session.
 php_xdebug_remote_host: 10.0.2.2
+# Prevent "SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" by
+# increasing these settings to a value used on the kañooh production servers.
+mysql_max_allowed_packet: 128M
+
