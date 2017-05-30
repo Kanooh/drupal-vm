@@ -30,10 +30,13 @@ drupal_install_profile: paddle
 # Without extra modules.
 drupal_enable_modules: []
 
+# Install drush extensions.
+drush_enable_extensions: [ "registry_rebuild" ]
+
 installed_extras:
   - drush
   - java
-  # - memcached
+  - memcached
   - selenium
   # - solr
   # - varnish

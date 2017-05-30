@@ -37,3 +37,10 @@
     chdir={{ drupal_core_path }}
   when: "'Successful' not in drupal_site_installed.stdout"
   become: no
+
+- name: Install drush extensions.
+  command: >
+    {{ drush_path }} dl -y --default-major=7 {{ drush_enable_extensions | join(" ") }}
+    chdir={{ drupal_core_path }}
+  when: "'Successful' not in drupal_site_installed.stdout"
+  become: no
