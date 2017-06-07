@@ -36,7 +36,7 @@ drush_enable_extensions: [ "registry_rebuild" ]
 installed_extras:
   - drush
   - java
-  - memcached
+  # - memcached
   - selenium
   # - solr
   # - varnish
