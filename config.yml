@@ -19,13 +19,16 @@ build_composer_project: false
 
 # Our Drupal code resides in the main synced directory, not in a 'drupal/web'
 # sub folder.
-drupal_core_path: "/var/www/drupalvm"
+drupal_core_path: "/var/www/tcovm"
 
-# Paddle is a Drupal 7 distribution, not Drupal 8.
+# If you need to run multiple instances of Drupal VM, set a unique hostname,
+# machine name, and IP address for each instance.
+vagrant_hostname: tcovm.dev
+vagrant_machine_name: tcovm
+vagrant_ip: 192.168.88.89
+
+# TCO-TOOL is a Drupal 7 distribution, not Drupal 8.
 drupal_major_version: 7
-
-# Use the Paddle installation profile instead of the standard one.
-drupal_install_profile: paddle
 
 # Without extra modules.
 drupal_enable_modules: []
@@ -37,7 +40,6 @@ installed_extras:
   - drush
   - java
   # - memcached
-  - selenium
   # - solr
   # - varnish
   - xdebug
@@ -56,21 +58,11 @@ extra_packages:
 #use the virtual box GUI:
 virtualbox_gui: true
 
-# Paddle has not been tested with PHP 7.0, yet. It's currently mostly used with
-# PHP 5.6.
+# We use php 5.6 because this site will be hosted on the same server as a paddle website.
 php_version: "5.6"
 
 # Paddle gets 256M on the kañooh production servers.
 php_memory_limit: "256M"
-
-# Allow to run Selenium tests with Firefox inside the VM.
-# Don't use
-#selenium_install_firefox: yes
-# from https://github.com/arknoll/ansible-role-selenium because it will always
-# install the latest version of Firefox.
-# Use https://github.com/arknoll/ansible-role-firefox/ instead and specify
-# Firefox version 40 instead of the default 38.
-firefox_version: '40.0'
 
 # Connect to the IDE on host machine to accept the debugging session.
 php_xdebug_remote_host: 10.0.2.2
