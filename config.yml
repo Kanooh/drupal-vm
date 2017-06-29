@@ -29,6 +29,7 @@ vagrant_ip: 192.168.88.89
 
 # TCO-TOOL is a Drupal 7 distribution, not Drupal 8.
 drupal_major_version: 7
+drupal_install_profile: tco
 
 # TCO-TOOL requires a new database name.
 drupal_db_name: tco-tool
