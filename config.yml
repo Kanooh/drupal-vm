@@ -44,7 +44,7 @@ installed_extras:
   - drush
   - java
   # - memcached
-  # - solr
+  - solr
   # - varnish
   - xdebug
 
