@@ -34,7 +34,7 @@ drupal_install_profile: tco
 drupal_db_name: tco-tool
 
 # Without extra modules.
-drupal_enable_modules: []
+drupal_enable_modules: ["tco_prefill_parameters"]
 
 # Install drush extensions.
 drush_enable_extensions: [ "registry_rebuild" ]
