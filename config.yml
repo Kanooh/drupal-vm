@@ -77,5 +77,9 @@ php_xdebug_remote_host: 10.0.2.2
 # increasing these settings to a value used on the kañooh production servers.
 mysql_max_allowed_packet: 128M
 
+# Create a default Solr core with the same name as on Staging and Production.
+solr_cores:
+  - k00295sr01
+
 post_provision_scripts:
   - "../scripts/configure-solr-tco-tool.sh"
