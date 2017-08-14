@@ -1,0 +1,4 @@
+---
+# Use this fork of arknoll.firefox until https://github.com/arknoll/ansible-role-firefox/pull/2 gets merged.
+- src: https://github.com/woqer/ansible-role-firefox
+  version: 2415e95f9b52b64628c89e445a757cd180b86d4f

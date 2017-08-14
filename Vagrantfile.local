@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+config.vm.provision 'ansible' do |ansible|
+  ansible.playbook = "#{host_config_dir}/local.playbook.yml"
+  ansible.galaxy_role_file = "#{host_config_dir}/local.requirements.yml"
+end
+
+# VirtualBox.
+config.vm.provider :virtualbox do |v|
+  v.customize ["modifyvm", :id, "--cpuexecutioncap",vconfig['vagrant_cpuexecutioncap']]
+  v.customize ["modifyvm", :id, "--vram",  vconfig['vagrant_videomemory']]
+end
+
+# At the end, reboot the VM.
+config.vm.provision :reload

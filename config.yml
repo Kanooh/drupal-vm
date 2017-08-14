@@ -10,12 +10,10 @@
 # override a single item in a list, you will need to re-define all items in
 # that list.
 
-# Use a desktop version of Ubuntu so we get a graphical interface where we can
-# see and interact with a browser while running a Selenium test.
-#vagrant_box: boxcutter/ubuntu1604-desktop
-
 # Don't use composer to build a local Paddle website.
-build_composer_project: false
+drupal_build_composer_project: false
+# Don't install Drupal at 'vagrant up'.
+drupal_install_site: false
 
 # Our Drupal code resides in the main synced directory, not in a 'drupal/web'
 # sub folder.
@@ -24,18 +22,11 @@ drupal_core_path: "/var/www/drupalvm"
 # Paddle is a Drupal 7 distribution, not Drupal 8.
 drupal_major_version: 7
 
-# Use the Paddle installation profile instead of the standard one.
-drupal_install_profile: paddle
-
-# Without extra modules.
-drupal_enable_modules: []
-
 # Install drush extensions.
 drush_enable_extensions: [ "registry_rebuild" ]
 
 installed_extras:
   - drush
-  - java
   # - memcached
   - selenium
   # - solr
@@ -54,7 +45,11 @@ extra_packages:
   - xorg
 
 #use the virtual box GUI:
-virtualbox_gui: true
+vagrant_gui: true
+
+# Cap the host CPU execution at 100% usage.
+vagrant_cpuexecutioncap: 100
+vagrant_videomemory: 16
 
 # Paddle has not been tested with PHP 7.0, yet. It's currently mostly used with
 # PHP 5.6.
@@ -76,9 +71,15 @@ php_memory_limit: "256M"
 # Firefox version 40 instead of the default 38.
 firefox_version: '40.0'
 
-# Connect to the IDE on host machine to accept the debugging session.
-php_xdebug_remote_host: 10.0.2.2
 # Prevent "SQLSTATE[HY000]: General error: 2006 MySQL server has gone away" by
 # increasing these settings to a value used on the kañooh production servers.
 mysql_max_allowed_packet: 128M
 
+# Don't only require vbguest and hostsupdater.
+vagrant_plugins:
+  - name: vagrant-auto_network
+  - name: vagrant-hostmanager
+  - name: vagrant-hostsupdater
+  - name: vagrant-list
+  - name: vagrant-reload
+  - name: vagrant-vbguest
