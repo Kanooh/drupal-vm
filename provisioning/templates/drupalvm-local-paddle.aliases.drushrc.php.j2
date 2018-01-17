@@ -1,0 +1,48 @@
+<?php
+
+// Provide Drush aliases for k00001 until k00400 to ease downloading and
+// importing (aka syncing) client databases etc.
+for ($i = 1; $i <= 400; $i++) {
+  $k_number = "k" . str_pad($i, 5, '0', STR_PAD_LEFT);
+  $aliases[$k_number . '.prod'] = array(
+    'uri' => $k_number . '.production.cloud.kanooh.be',
+    'remote-host' => 'web01.cloud.kanooh.be',
+    'remote-user' => $k_number . 'su01',
+    'root' => '/var/www/vhosts/' . $k_number . '/htdocs',
+  );
+}
+
+/**
+ * Drupal VM drush aliases.
+ *
+ * @see example.aliases.drushrc.php.
+ */
+
+{% macro alias(host, root) -%}
+{%- if root not in _devtool_docroots %}
+$aliases['{{ host }}'] = array(
+  'uri' => '{{ host }}',
+  'root' => '{{ root }}',
+);
+
+{% endif -%}
+{% endmacro -%}
+
+{% block aliases -%}
+{%- if drupalvm_webserver == 'apache' -%}
+  {%- for vhost in apache_vhosts -%}
+    {{ alias(vhost.servername, vhost.documentroot) }}
+    {%- if vhost.serveralias is defined -%}
+      {%- for serveralias in vhost.serveralias.split() -%}
+        {{ alias(serveralias, vhost.documentroot) }}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- elif drupalvm_webserver == 'nginx' -%}
+  {%- for host in nginx_vhosts -%}
+    {%- for server_name in host.server_name.split() -%}
+      {{ alias(server_name, host.root) }}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- endblock %}
