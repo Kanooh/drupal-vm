@@ -25,6 +25,9 @@ drupal_major_version: 7
 # Install drush extensions.
 drush_enable_extensions: [ "registry_rebuild" ]
 
+# Add Drush aliases for Paddle client websites.
+drush_aliases_guest_template: "templates/drupalvm-local-paddle.aliases.drushrc.php.j2"
+
 installed_extras:
   - drush
   # - memcached
