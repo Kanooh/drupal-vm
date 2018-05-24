@@ -1,16 +1,16 @@
 <?php
 
 // Provide Drush aliases for k00001 until k00400 to ease downloading and
-// importing (aka syncing) client databases etc.
-for ($i = 1; $i <= 400; $i++) {
-  $k_number = "k" . str_pad($i, 5, '0', STR_PAD_LEFT);
-  $aliases[$k_number . '.prod'] = array(
-    'uri' => $k_number . '.production.cloud.kanooh.be',
-    'remote-host' => 'web01.cloud.kanooh.be',
-    'remote-user' => $k_number . 'su01',
-    'root' => '/var/www/vhosts/' . $k_number . '/htdocs',
-  );
-}
+// importing (aka syncing) client databases etc. This was for PADDLE 1.0.
+// for ($i = 1; $i <= 400; $i++) {
+//   $k_number = "k" . str_pad($i, 5, '0', STR_PAD_LEFT);
+//   $al//iases[$k_number . '.prod'] = array(
+//     'uri' => $k_number . '.production.cloud.kanooh.be',
+//     'remote-host' => 'web01.cloud.kanooh.be',
+//     'remote-user' => $k_num ber . 'su01',
+//     'root' => '/var/www/vhosts/' . $k_number . '/htdocs',
+//   );
+// }
 
 /**
  * Drupal VM drush aliases.
@@ -22,7 +22,7 @@ for ($i = 1; $i <= 400; $i++) {
 {%- if root not in _devtool_docroots %}
 $aliases['{{ host }}'] = array(
   'uri' => '{{ host }}',
-  'root' => '{{ root }}',
+  'root' => '{{ root }}'
 );
 
 {% endif -%}

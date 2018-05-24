@@ -9,30 +9,43 @@
 # Note: The merge of the variables in this file is shallow, so if you want to
 # override a single item in a list, you will need to re-define all items in
 # that list.
+# Available `vagrant_box` values include:
+#   - beet/box (pre-provisioned, based on Ubuntu 16.04)
+#   - geerlingguy/centos7
+#   - geerlingguy/centos6
+#   - geerlingguy/debian9
+#   - geerlingguy/debian8
+#   - geerlingguy/ubuntu1604
+#   - geerlingguy/ubuntu1404
+vagrant_box: geerlingguy/ubuntu1604
 
-# Don't use composer to build a local Paddle website.
+# Don't use composer to build a local Paddle8 website, we will run it manually.
 drupal_build_composer_project: false
 # Don't install Drupal at 'vagrant up'.
 drupal_install_site: false
 
 # Our Drupal code resides in the main synced directory, not in a 'drupal/web'
 # sub folder.
-drupal_core_path: "/var/www/drupalvm"
+drupal_core_path: "/var/www/drupal8vm"
 
-# Paddle is a Drupal 7 distribution, not Drupal 8.
-drupal_major_version: 7
+# Paddle 2.0 is a Drupal 8 distribution.
+drupal_major_version: 8
 
-# Install drush extensions.
-drush_enable_extensions: [ "registry_rebuild" ]
+
+# drush is installed per project. so we won't create the aliases here
+configure_drush_aliases: false
+
+## Install drush extensions.
+#drush_enable_extensions: [ "registry_rebuild" ]
 
 # Add Drush aliases for Paddle client websites.
-drush_aliases_guest_template: "templates/drupalvm-local-paddle.aliases.drushrc.php.j2"
+# drush_aliases_guest_template: "templates/drupalvm-local-paddle.aliases.drushrc.php.j2"
 
 installed_extras:
-  - drush
   # - memcached
+  - nodejs
   - selenium
-  # - solr
+  - solr
   # - varnish
   - xdebug
   - mailhog
