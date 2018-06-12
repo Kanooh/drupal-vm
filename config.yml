@@ -28,6 +28,11 @@ drupal_install_site: false
 # sub folder.
 drupal_core_path: "/var/www/drupal8vm"
 
+# Our vagrant host name should not conflict with the existing Paddle environment.
+vagrant_hostname: drupal8vm.test
+vagrant_machine_name: drupal8vm
+vagrant_ip: 192.168.88.90
+
 # Paddle 2.0 is a Drupal 8 distribution.
 drupal_major_version: 8
 
