@@ -14,7 +14,7 @@
 # Don't use composer to build a local Meesterlijk Gezond website.
 drupal_build_composer_project: false
 # Don't install Drupal at 'vagrant up'.
-drupal_install_site: false
+drupal_install_site: true
 
 # Our Drupal code resides in the main synced directory, not in a 'drupal/web'
 # sub folder.
